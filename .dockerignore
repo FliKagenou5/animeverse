@@ -1,0 +1,17 @@
+**/node_modules
+**/dist
+**/*.log
+server/data
+**/*.db
+**/*.db-wal
+**/*.db-shm
+.git
+.gitignore
+.github
+.env
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.production.example
+*.md
+shots

@@ -1,0 +1,28 @@
+{
+  "name": "animeverse-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ANIMEVERSE REST API - Express + SQLite (node:sqlite)",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "db:migrate": "node src/database/cli.js migrate",
+    "db:seed": "node src/database/cli.js seed",
+    "db:reset": "node src/database/cli.js reset",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "zod": "^3.24.1"
+  }
+}

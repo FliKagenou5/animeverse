@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: animeverse
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: animeverse-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: SESSION_DAYS
+        value: "7"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: DATABASE_PATH
+        value: /var/data/animeverse.db
+      - key: AUTO_SEED
+        value: "true"
+      - key: ADMIN_NAME
+        value: Aria Vance
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DEMO_NAME
+        value: Kai Nomura
+      - key: DEMO_EMAIL
+        sync: false
+      - key: DEMO_PASSWORD
+        sync: false
+      # The deployed service URL is allowed automatically via RENDER_EXTERNAL_URL.
+      # If you attach a custom domain, add its exact origin here and redeploy:
+      # - key: CLIENT_ORIGINS
+      #   value: https://animeverse.example.com

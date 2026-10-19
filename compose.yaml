@@ -1,0 +1,16 @@
+services:
+  animeverse:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - server/.env.production
+    environment:
+      NODE_ENV: production
+      DATABASE_PATH: /data/animeverse.db
+    ports:
+      - "4000:4000"
+    volumes:
+      - animeverse-data:/data
+
+volumes:
+  animeverse-data:
